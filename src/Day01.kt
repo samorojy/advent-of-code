@@ -1,17 +1,25 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        return input.size
-    }
-
-    fun part2(input: List<String>): Int {
-        return input.size
-    }
-
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
-
-    val input = readInput("Day01")
-    println(part1(input))
-    println(part2(input))
+    val inputs = readInput("Day01")
+    println("inputs=${max(inputs)}")
+    println("topThree=${topThree(inputs)}")
 }
+
+fun max(testInput: List<String>) = total(testInput).max()
+
+fun total(testInput: List<String>): List<Int> {
+    val res = mutableListOf<Int>()
+    testInput.scan(0) { total, input ->
+        if (input.isEmpty()) {
+            res.add(total)
+            0
+        } else {
+            total + input.toInt()
+        }
+    }
+    return res
+}
+
+fun topThree(testInput: List<String>) = total(testInput)
+    .sortedDescending()
+    .take(3)
+    .fold(0) { init, acc -> init + acc }
