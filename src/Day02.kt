@@ -1,7 +1,7 @@
 fun main() {
     val inputs = readInput("Day02")
-    println("inputs=${calculateScore(inputs,true)}")
-    println("topThree=${calculateScore(inputs,false)}")
+    println("first=${calculateScore(inputs,true)}")
+    println("second=${calculateScore(inputs,false)}")
 }
 
 fun calculateScore(input: List<String>, withPlay: Boolean): Int {
